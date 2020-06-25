@@ -1,0 +1,11 @@
+{
+  "PUSH_URL": "http://zkteco.test/push",
+  "PUSH_KEY": "1ce649f57584f70d62387b65dba6601974a3f888",
+  "PUSH_FREQUENCY": 1,
+  "DEVICES": [
+    {
+      "ip": "192.168.0.2",
+      "clear_from_device_on_fetch": false
+    }
+  ]
+}

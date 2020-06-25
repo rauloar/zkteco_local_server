@@ -1,0 +1,6 @@
+.idea
+/output
+/__pycache__
+*.db
+*.log
+last.txt
