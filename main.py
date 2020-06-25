@@ -21,7 +21,7 @@ class DB:
             self.conn.commit()
 
     def insert(self, device, date, user, Verified=False):
-        print("INSERT INTO logs VALUES ('{}','{}', {}, {})".format(str(device), str(date), int(user), int(Verified)))
+        print("Inserting log {}, {}, {}, {}".format(str(device), str(date), int(user), int(Verified)))
         self.conn.execute(
             "INSERT INTO logs VALUES ('{}','{}', {}, {})".format(str(device), str(date), int(user), int(Verified)))
         self.conn.commit()
@@ -129,6 +129,7 @@ def push_to_server(device_serial, user_id, log_time):
                     '\t'.join(
                         ['Error during API Call.', str(user_id), str(log_time), str(device_serial), response.text]))
             else:
+                print("Pushed log to server : (user : {}, device : {})".format(data['user'], data['identifier']))
                 database.verify(device_serial, log_time, user_id)
         else:
             error_str = response.text
