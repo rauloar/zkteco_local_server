@@ -45,7 +45,7 @@ DEVICES is an array of local devices.
 
 
 ### Build
-To build this application. Install requirements and run ```python setup.py build```. Executeable file can be found at /output directory.
+To build this application. Install requirements and run ```python setup.py build```. Executeable file can be found at /build directory.
 
 
 ### Author
