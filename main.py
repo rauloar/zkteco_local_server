@@ -70,8 +70,8 @@ error_logger = setup_logger('error_logger', 'error.log', logging.ERROR)
 info_logger = setup_logger('info_logger', 'logs.log')
 
 
-def get_attendances(ip, port=4370, timeout=30, device_serial=None, clear_from_device_on_fetch=False):
-    zk = ZK(ip, port=port, timeout=timeout)
+def get_attendances(ip, port=4370, timeout=30, device_serial=None, clear_from_device_on_fetch=False, password=0):
+    zk = ZK(ip, port=port, timeout=timeout, password=password)
     conn = None
     returning_attendance = []
     try:
@@ -170,10 +170,10 @@ def main():
         timeout = int(device["timeout"]) if "timeout" in keys else 30
         clear_from_device_on_fetch = bool(
             device["clear_from_device_on_fetch"]) if "clear_from_device_on_fetch" in keys else False
-
+        password = int(device["password"]) if "password" in keys else 0
         device_serial = get_serial(ip, port, timeout)
 
-        attendances = get_attendances(ip, port, timeout, device_serial, clear_from_device_on_fetch)
+        attendances = get_attendances(ip, port, timeout, device_serial, clear_from_device_on_fetch, password)
         for attendance in attendances:
             push_to_server(device_serial, user_id=attendance.user_id,
                            log_time=attendance.timestamp.strftime("%Y-%m-%d %H:%M:%S"), )
