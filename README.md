@@ -17,7 +17,8 @@ You can change configurations by editing *config.json* file.
       "ip": "192.168.0.2",
       "port": 4370,
       "timeout": 30,
-      "clear_from_device_on_fetch": false
+      "clear_from_device_on_fetch": false,
+      "password": 0
     }
   ]
 }
@@ -32,7 +33,8 @@ DEVICES is an array of local devices.
     "ip": "192.168.0.2",
     "port": 4370,
     "timeout": 30,
-    "clear_from_device_on_fetch": false
+    "clear_from_device_on_fetch": false,
+    "password":0
 }
 ```
 *ip* - is the IP Address of device. (Required)
@@ -42,6 +44,8 @@ DEVICES is an array of local devices.
 *timeout* - timeout in second (Optional, Default : 30)
 
 *clear_from_device_on_fetch* - is a flag. If set *true* application will erase attendances from device after fetching.
+
+*password* - password for authentication
 
 
 ### Build
