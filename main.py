@@ -144,8 +144,8 @@ def push_to_server(device_serial, user_id, log_time):
         # raise Exception("Remote server error")
 
 
-def get_serial(ip, port=4370, timeout=30):
-    zk = ZK(ip, port=port, timeout=timeout)
+def get_serial(ip, port=4370, timeout=30, password=0):
+    zk = ZK(ip, port=port, timeout=timeout, password=password)
     conn = None
     serial = None
     try:
@@ -172,7 +172,7 @@ def main():
         clear_from_device_on_fetch = bool(
             device["clear_from_device_on_fetch"]) if "clear_from_device_on_fetch" in keys else False
         password = int(device["password"]) if "password" in keys else 0
-        device_serial = get_serial(ip, port, timeout)
+        device_serial = get_serial(ip, port, timeout, password)
 
         attendances = get_attendances(ip, port, timeout, device_serial, clear_from_device_on_fetch, password)
         for attendance in attendances:
