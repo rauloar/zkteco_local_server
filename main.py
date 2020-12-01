@@ -6,6 +6,7 @@ from logging.handlers import RotatingFileHandler
 from requests import request
 from zk import ZK
 import pickledb
+from zk.exception import ZKErrorResponse
 
 
 class DB:
@@ -90,9 +91,9 @@ def get_attendances(ip, port=4370, timeout=30, device_serial=None, clear_from_de
                         returning_attendance.append(at)
                 except:
                     error_logger.exception(
-                        str(device_serial) + ' -> ' + str(ip) + ' exception when fetching from device...')
-                    logging.error(str(device_serial) + ' -> ' + str(ip) + ' exception when fetching from device...')
-                    raise Exception('Database error')
+                        str(device_serial) + ' -> ' + str(ip) + ' exception when inserting to database...')
+                    logging.error(str(device_serial) + ' -> ' + str(ip) + ' exception inserting to database...')
+                    raise IOError('Database error')
 
             if clear_from_device_on_fetch:
                 x = conn.clear_attendance()
@@ -101,7 +102,7 @@ def get_attendances(ip, port=4370, timeout=30, device_serial=None, clear_from_de
         x = conn.enable_device()
         info_logger.info("\t".join((device_serial, "Device Enable Attempted. Result:", str(x))))
         logging.info("\t".join((device_serial, "Device Enable Attempted. Result:", str(x))))
-    except:
+    except ZKErrorResponse:
         error_logger.exception(str(device_serial) + ' -> ' + str(ip) + ' exception when fetching from device...')
         logging.error(str(device_serial) + ' -> ' + str(ip) + ' exception when fetching from device...')
         # raise Exception('Device fetch failed.')
