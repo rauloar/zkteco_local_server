@@ -1,5 +1,6 @@
 .idea
 /output
+/build
 /__pycache__
 *.db
 *.log
