@@ -49,8 +49,8 @@ To build this application. Install requirements and run ```python setup.py build
 
 
 ### Author
-Md. Hazzaz Bin Faiz
+[Md. Hazzaz Bin Faiz](https://github.com/HazzazBinFaiz)
 
 
 ### Owner
-Smart Software Ltd.
+[Smart Software Ltd.](https://www.smartsoftware.com.bd)
