@@ -6,7 +6,7 @@ This application works in only Local Area Network.
 It pulls attendance logs from device and push it to server.
 
 ### Install Dependencies
-To install required dependencies vie **pip**, run ```pip install -r requirements.txt```.
+To install required dependencies vie **pip**, run ```pip install -r requirements.txt```
 
 ### Configuration
 You can change configurations by editing *config.json* file.
